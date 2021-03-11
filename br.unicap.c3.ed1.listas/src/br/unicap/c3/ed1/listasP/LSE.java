@@ -6,7 +6,7 @@ public class LSE<T> {
     private LSENode<T> ult; // atributo que guarda o endereço do ult nó.
     private int qtd; // atributo que guarda a qtd de nós na lista.
 
-    public void inserirInfo(int info) {
+    public void inserirInfo(T info) {
         LSENode<T> newNo = new LSENode(info); // criação do novo nó para inserir na lista.
         if (qtd == 0) {
             this.prim = newNo;
