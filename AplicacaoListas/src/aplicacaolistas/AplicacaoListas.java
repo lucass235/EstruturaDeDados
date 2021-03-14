@@ -10,6 +10,7 @@ public class AplicacaoListas {
         LSE<Integer> num = new LSE();
         int op, valor;
         System.out.println("Bem vindo!!");
+       
         do {
             menu();
             op = in.nextInt();

@@ -1,6 +1,6 @@
 package logica;
 
-class LSENode<T> {
+class LSENode<T extends Comparable <T>>{
 
     private T info; // atributo contendo a informação do nó adicionado.
     private LSENode<T> prox; // atributo contendo o endereço do prox nó.

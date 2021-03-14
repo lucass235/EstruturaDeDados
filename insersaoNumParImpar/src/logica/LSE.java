@@ -1,16 +1,21 @@
 package logica;
 
-public class LSE<T> {
+public class LSE<T extends Comparable<T>> {
 
     private LSENode<T> prim; // atributo que guarda o endereço do prim nó.
     private LSENode<T> ult; // atributo que guarda o endereço do ult nó.
     private int qtd; // atributo que guarda a qtd de nós na lista.
+
     public void inserirInfo(T info) {
+
         LSENode<T> newNo = new LSENode(info); // criação do novo nó para inserir na lista.
         if (qtd == 0) {
             this.prim = newNo;
             this.ult = newNo;
             qtd++;
+            System.out.println("================================================");
+            System.out.println("Valor inserido com sucesso!");
+            System.out.println("================================================");
         } else {
             boolean achou = buscarInfo(info);
             if (achou == true) {
@@ -48,10 +53,9 @@ public class LSE<T> {
 
     public boolean buscarInfo(T info) {
         LSENode<T> aux;
-        LSENode<T> no = new LSENode(info);
         aux = this.prim;
         for (int i = 0; i < this.qtd; i++) {
-            if (no.getInfo() == aux.getInfo()) {
+            if (aux.getInfo().compareTo(info) == 0) {
                 return true;
             }
             aux = aux.getProx();

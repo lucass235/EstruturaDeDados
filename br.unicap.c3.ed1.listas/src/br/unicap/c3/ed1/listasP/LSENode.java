@@ -12,6 +12,7 @@ class LSENode<T> {
     void setInfo(T valor) { // metodo set, atualizando a informação do nó.
         this.info = valor;
     }
+    
     void setProx(LSENode<T> prox) { // metodo set, atualizando a o endereço do prox nó.
         this.prox = prox;
     }

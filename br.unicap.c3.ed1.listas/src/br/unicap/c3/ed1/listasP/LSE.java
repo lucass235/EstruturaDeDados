@@ -13,8 +13,8 @@ public class LSE<T> {
             this.ult = newNo;
             qtd++;
         } else {
-            newNo.setProx(this.prim);
-            this.prim = newNo;
+            this.ult.setProx(newNo);
+            this.ult = newNo;
             qtd++;
         }
         System.out.println("================================================");
