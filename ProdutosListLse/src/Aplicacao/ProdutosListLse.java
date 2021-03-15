@@ -83,7 +83,7 @@ public class ProdutosListLse {
                 + "\n2 - Inserir produto no final da lista\n3 - Remover o primeiro"
                 + "produto da lista\n4 - Remover o último produto da lista"
                 + "\n5 - Exibir todos os produtos da lista\n6 - Exibir os dados"
-                + "de um produto da lista\n7 - Alterar os dados de um produto da lista"
+                + " de um produto da lista\n7 - Alterar os dados de um produto da lista"
                 + "\n0 - Sair do produto\nInforme a opção desejada: ");
     }
 }
