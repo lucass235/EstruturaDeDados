@@ -77,34 +77,56 @@ public class LSESemRepitidos<T extends Comparable<T>> {
     }
 
     public void removerProdutoP() {
-        if (qtd == 0) {
-            System.out.println("================================================");
-            System.err.println("Lista vazia!");
-            System.out.println("================================================");
-        } else {
-            this.prim = this.prim.getProx();
-            qtd--;
-            System.out.println("================================================");
-            System.out.println("Produto removido!");
-            System.out.println("================================================");
+        switch (qtd) {
+            case 0:
+                System.out.println("================================================");
+                System.err.println("Lista vazia!");
+                System.out.println("================================================");
+                break;
+            case 1:
+                this.prim = null;
+                this.ult = null;
+                qtd--;
+                System.out.println("================================================");
+                System.out.println("Produto removido!");
+                System.out.println("================================================");
+                break;
+            default:
+                this.prim = this.prim.getProx();
+                qtd--;
+                System.out.println("================================================");
+                System.out.println("Produto removido!");
+                System.out.println("================================================");
+                break;
         }
     }
 
     public void removerProdutoF() {
-        if (qtd == 0) {
-            System.out.println("================================================");
-            System.err.println("Lista vazia!");
-            System.out.println("================================================");
-        } else {
-            LSENode<T> aux = this.prim;
-            for (int i = 0; i < qtd - 1; i++) {
-                aux = aux.getProx();
-            }
-            this.ult = aux;
-            qtd--;
-            System.out.println("================================================");
-            System.out.println("Produto removido!");
-            System.out.println("================================================");
+        switch (qtd) {
+            case 0:
+                System.out.println("================================================");
+                System.err.println("Lista vazia!");
+                System.out.println("================================================");
+                break;
+            case 1:
+                this.prim = null;
+                this.ult = null;
+                qtd--;
+                System.out.println("================================================");
+                System.out.println("Produto removido!");
+                System.out.println("================================================");
+                break;
+            default:
+                LSENode<T> aux = this.prim;
+                for (int i = 1; i < qtd - 1; i++) {
+                    aux = aux.getProx();
+                }   
+                this.ult = aux;
+                qtd--;
+                System.out.println("================================================");
+                System.out.println("Produto removido!");
+                System.out.println("================================================");
+                break;
         }
     }
 
