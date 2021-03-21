@@ -1,4 +1,4 @@
-package logica;
+package List;
 
 public class LSE<T extends Comparable<T>> {
 
@@ -8,7 +8,7 @@ public class LSE<T extends Comparable<T>> {
 
     public void inserirInfo(T info) {
 
-        LSENode<T> newNo = new LSENode(info); // criação do novo nó para inserir na lista.
+       LSENode<T> newNo = new LSENode(info); // criação do novo nó para inserir na lista.
         if (qtd == 0) {
             this.prim = newNo;
             this.ult = newNo;

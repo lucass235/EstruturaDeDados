@@ -1,4 +1,4 @@
-package logica;
+package List;
 
 class LSENode<T extends Comparable <T>>{
 

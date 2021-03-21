@@ -1,7 +1,7 @@
 package Aplicação;
 
 import java.util.Scanner;
-import logica.LSE;
+import List.LSE;
 
 public class InsersaoNumParImpar {
 
@@ -63,6 +63,7 @@ public class InsersaoNumParImpar {
             }
         } while (op != 0);
     }
+   
     public static void menu() {
         System.out.print("1 - Armazenar um valor na lista\n2 - Procurar número"
                 + "\n3 - Exibir lista de numeros Impares\n4 - Exibir Lista de numeros Pares"
