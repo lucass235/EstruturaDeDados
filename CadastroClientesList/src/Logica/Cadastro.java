@@ -4,14 +4,19 @@ import List.LSESemRepitidos;
 import java.util.Scanner;
 
 public class Cadastro {
-    
-    LSESemRepitidos<Cliente> lse = new LSESemRepitidos();
+
+    private LSESemRepitidos<Cliente> lse;
+
+    public Cadastro() {
+        this.lse = new LSESemRepitidos();
+    }
+
     Cliente c;
     Scanner in = new Scanner(System.in);
-    
+
     public void adicinarCliente(String cpf) {
         Cliente achou;
-        c = new Cliente (cpf,"","","");
+        c = new Cliente(cpf, "", "", "");
         achou = lse.buscarCliente(c);
         if (achou == null) {
             String no, fo, em;
@@ -29,19 +34,19 @@ public class Cadastro {
             System.out.println("=======================================");
         }
     }
-    
+
     public void listarClientes() {
         lse.exibirClientes();
     }
-    
+
     public void removerCliente(String cpf) {
-        c = new Cliente(cpf,"","","");
+        c = new Cliente(cpf, "", "", "");
         lse.removerCliente(c);
     }
-    
+
     public void consultarCliente(String cpf) {
-        Cliente achou ;
-        c = new Cliente(cpf,"","","");
+        Cliente achou;
+        c = new Cliente(cpf, "", "", "");
         achou = lse.buscarCliente(c);
         if (achou == null) {
             System.out.println("=======================================");
@@ -51,10 +56,10 @@ public class Cadastro {
             System.out.println(achou.toString());
         }
     }
-    
+
     public void AlterarDados(String cpf) {
         Cliente achou;
-        c = new Cliente(cpf,"","","");
+        c = new Cliente(cpf, "", "", "");
         achou = lse.buscarCliente(c);
         if (achou != null) {
             int op;
@@ -93,16 +98,16 @@ public class Cadastro {
                         System.out.println("=======================================");
                 }
             } while (op != 1 && op != 2 && op != 3 && op != 0);
-            
+
         }
     }
-    
+
     private void menu() {
         System.out.println("Escolha uma opção de alteração\n1 - E-mail e "
                 + "telefone\n2 - E-mail\n3 - Telefone\nInforme a opção: ");
     }
-    
-    public void exibirClientes (){
+
+    public void exibirClientes() {
         lse.exibirClientes();
     }
 }
