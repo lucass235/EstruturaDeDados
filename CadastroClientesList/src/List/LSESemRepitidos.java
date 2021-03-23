@@ -18,7 +18,7 @@ public class LSESemRepitidos<T extends Comparable<T>> {
         } else {
             this.ult.setProx(newPro);
             this.ult = newPro;
-            qtd++;
+            this.qtd++;
             System.out.println("=======================================");
             System.out.println("Cliente Cadastrado!");
             System.out.println("=======================================");
@@ -41,17 +41,16 @@ public class LSESemRepitidos<T extends Comparable<T>> {
         }
     }
 
-    private LSENode<T> buscarNo(T p) {
-        LSENode<T> aux = this.prim;
+    private LSENode<T> buscarNo(T c) { // metodo de busca principal.
+        LSENode<T> aux = prim;
         T auxCliente = aux.getInfo();
         for (int i = 0; i < qtd; i++) {
-            auxCliente = aux.getInfo();
-            if (auxCliente.compareTo(p) == 0) {
-                return aux;
+            if (auxCliente.compareTo(c) == 0) {
+                return aux; // achou o valor.
             }
             aux = aux.getProx();
         }
-        return null;
+        return null; // valor não encontrado.
     }
 
     public T buscarCliente(T c) {

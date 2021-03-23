@@ -48,7 +48,7 @@ public class Cliente implements Comparable<Cliente> {
 
     @Override
     public String toString (){
-         String e = "Email: " + this.getEmail() + "\n";
+        String e = "Email: " + this.getEmail() + "\n";
         String f = "Telefone: " + this.getFone() + "\n";
         String n = "Nome: " + this.getNome() + "\n";
         String dados = n + e + f;
