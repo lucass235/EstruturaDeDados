@@ -1,3 +1,3 @@
 # **EstruturaDeDados**
- Repositorio da disciplina de Estrutura de Dados\n
+ Repositorio da disciplina de Estrutura de Dados
 Prof: Ana Eliz
