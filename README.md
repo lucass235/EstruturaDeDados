@@ -1,4 +1,4 @@
 # **EstruturaDeDados**
  Repositorio da disciplina de Estrutura de Dados
 ***
-[Meu Linkedln] (Lucas dos Santos Amorim Rêgo | LinkedIn)
+[Meu Linkedln](https://www.linkedin.com/in/lucas-dos-santos-amorim-r%C3%AAgo-2a77251a4/)
