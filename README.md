@@ -1,4 +1,3 @@
 # EstruturaDeDados
- Repositorio da disciplina de Estrutura de Dados
-Domínio  UNICAP
-Prof: Ana Eliza
+ Repositorio da disciplina de Estrutura de Dados\n
+Prof: Ana Eliz
