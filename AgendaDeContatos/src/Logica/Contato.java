@@ -48,7 +48,6 @@ public class Contato implements Comparable<Contato> {
 
     @Override
     public int compareTo(Contato cli) {
-
         return this.nome.compareTo(cli.nome);
     }
 }

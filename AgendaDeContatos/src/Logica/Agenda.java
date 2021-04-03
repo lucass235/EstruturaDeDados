@@ -14,7 +14,7 @@ public class Agenda {
     Contato c;
     Scanner in = new Scanner(System.in);
 
-    public void adicinarCliente(String nome) {
+    public void adicinarContato(String nome) {
         Contato achou;
         c = new Contato(nome, "", "");
         achou = lse.buscarContato(c);
@@ -28,7 +28,7 @@ public class Agenda {
             lse.inserirContato(c);
         } else {
             System.out.println("=======================================");
-            System.err.println("Esse cpf já se encontra cadastrado!");
+            System.err.println("Esse nome já se encontra cadastrado!");
             System.out.println("=======================================");
         }
     }

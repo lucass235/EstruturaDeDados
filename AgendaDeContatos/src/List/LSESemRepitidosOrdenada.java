@@ -5,40 +5,51 @@ public class LSESemRepitidosOrdenada<T extends Comparable<T>> {
     private LSENode<T> prim;
     private LSENode<T> ult;
     private int qtd;
-    
+
     public void inserirContato(T con) {
         LSENode<T> newCon = new LSENode(con);
         if (qtd == 0) { // lista vazia.
             this.prim = newCon;
             this.ult = newCon;
             this.qtd++;
+            System.out.println("==================================================");
+            System.out.println("Primeiro contato inserido!");
+            System.out.println("==================================================");
         } else if (newCon.getInfo().compareTo(this.prim.getInfo()) < 0) {
             // valor menor que o prim.getInfo, inserção no inico da lista.
             newCon.setProx(this.prim);
             this.prim = newCon;
             this.qtd++;
+            System.out.println("==================================================");
+            System.out.println("Contato inserido no inicio da lista!");
+            System.out.println("==================================================");
         } else if (newCon.getInfo().compareTo(this.ult.getInfo()) > 0) {
             // valor maior que o ult.getInfo, inserção no final da lista.
             this.ult.setProx(newCon);
             this.ult = newCon;
             this.qtd++;
+            System.out.println("==================================================");
+            System.out.println("Contato inserido no final da lista!");
+            System.out.println("==================================================");
         } else { // inserir valor no meio da lista, entrem o prim e o ult.
             LSENode<T> atu = this.prim.getProx();
             LSENode<T> ant = this.prim;
-            while (atu.getProx() != null) {
+            while (atu != null) {
                 if (newCon.getInfo().compareTo(atu.getInfo()) < 0) {
-                    newCon.setProx(atu);
                     ant.setProx(newCon);
+                    newCon.setProx(atu);
                     this.qtd++;
+                    System.out.println("==================================================");
+                    System.out.println("Contato inserido no meio!!");
+                    System.out.println("==================================================");
+                    return;
                 } else {
+                    System.out.println("caiu no else do meio");
                     ant = atu;
                     atu = atu.getProx();
                 }
             }
         }
-        System.out.println("=======================================");
-        System.out.println("Contato Inserido!");
-        System.out.println("=======================================");
     }
 
     public void exibirContatos() {
@@ -51,24 +62,18 @@ public class LSESemRepitidosOrdenada<T extends Comparable<T>> {
             for (int i = 0; i < qtd; i++) {
                 System.out.println(aux.getInfo());
                 aux = aux.getProx();
-                if (this.qtd > 1) {
-                    System.out.println("==================================================");
-                }
             }
-        }
-        if (this.qtd == 1) {
-            System.out.println("==============================================");
         }
     }
 
-    private LSENode<T> buscarNo(T c) { // metodo de busca principal.
-        LSENode<T> aux = prim;
-        T auxContato = aux.getInfo();
-        for (int i = 0; i < qtd; i++) {
-            if (c.compareTo(auxContato) == 0) {
+    private LSENode<T> buscarNo(T c) { // função de busca principal.
+        LSENode<T> aux = this.prim;
+        while (aux != null) {
+            if (c.compareTo(aux.getInfo()) == 0) {
                 return aux; // achou o valor.
             }
             aux = aux.getProx();
+
         }
         return null; // valor não encontrado.
     }
@@ -93,8 +98,8 @@ public class LSESemRepitidosOrdenada<T extends Comparable<T>> {
             System.err.println("Agenda vazia!!");
             System.out.println("=============================================");
         } else {
-        int meQuePrim = con.compareTo(this.prim.getInfo());
-        int maQueUlt = con.compareTo(this.ult.getInfo());
+            int meQuePrim = con.compareTo(this.prim.getInfo());
+            int maQueUlt = con.compareTo(this.ult.getInfo());
             if (meQuePrim < 0 || maQueUlt > 0) {
                 System.out.println("=============================================");
                 System.err.println("Contato não encontrado!!");
@@ -116,9 +121,10 @@ public class LSESemRepitidosOrdenada<T extends Comparable<T>> {
                 System.out.println("=======================================");
             } else if (con.compareTo(ult.getInfo()) == 0) {
                 LSENode<T> aux = this.prim;
-                while (aux != this.ult) {
+                while (aux.getProx() != this.ult) {
                     aux = aux.getProx();
                 }
+                aux.setProx(null);
                 this.ult = aux;
                 this.qtd--;
                 System.out.println("=======================================");
@@ -128,7 +134,7 @@ public class LSESemRepitidosOrdenada<T extends Comparable<T>> {
                 LSENode<T> atu = this.prim.getProx();
                 LSENode<T> ant = this.prim;
                 while (atu.getProx() != null) {
-                    if (con == atu) {
+                    if (con.compareTo(atu.getInfo()) == 0) {
                         break;
                     }
                     ant = atu;

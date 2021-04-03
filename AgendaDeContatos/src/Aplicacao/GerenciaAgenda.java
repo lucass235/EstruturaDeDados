@@ -18,7 +18,7 @@ public class GerenciaAgenda {
                 case 1:
                     System.out.print("Informe o nome do novo contato: ");
                     nome = in.nextLine();
-                    a.adicinarCliente(nome);
+                    a.adicinarContato(nome);
                     break;
                 case 2:
                     System.out.print("Informe o nome do contato a ser removido: ");
