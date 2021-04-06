@@ -120,7 +120,7 @@ public class LSEOrdenada<T extends Comparable<T>> {
                             // do qtd de valores a serem removidos.
                             atu = atu.getProx();
                             qtdDeRemocao++;
-                             if (atu.getInfo().compareTo(this.ult.getInfo()) == 0) {
+                             if (atu == this.ult ) {
                                  // condição da variavel atu ser igual ao ult.
                                  break;
                              }
