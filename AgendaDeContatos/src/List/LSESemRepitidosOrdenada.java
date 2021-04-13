@@ -32,10 +32,13 @@ public class LSESemRepitidosOrdenada<T extends Comparable<T>> {
             System.out.println("Contato inserido no final da lista!");
             System.out.println("==================================================");
         } else { // inserir valor no meio da lista, entrem o prim e o ult.
-            LSENode<T> atu = this.prim.getProx();
+            LSENode<T> atu = this.prim;
             LSENode<T> ant = this.prim;
             while (atu != null) {
-                if (newCon.getInfo().compareTo(atu.getInfo()) < 0) {
+                if (newCon.getInfo().compareTo(atu.getInfo()) == 0) {
+                    System.out.println("Valor repitido!");
+                    return;
+                } else if (newCon.getInfo().compareTo(atu.getInfo()) < 0) {
                     ant.setProx(newCon);
                     newCon.setProx(atu);
                     this.qtd++;
@@ -44,7 +47,6 @@ public class LSESemRepitidosOrdenada<T extends Comparable<T>> {
                     System.out.println("==================================================");
                     return;
                 } else {
-                    System.out.println("caiu no else do meio");
                     ant = atu;
                     atu = atu.getProx();
                 }

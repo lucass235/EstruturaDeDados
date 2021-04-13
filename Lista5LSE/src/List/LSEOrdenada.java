@@ -35,19 +35,7 @@ public class LSEOrdenada<T extends Comparable<T>> {
             LSENode<T> atu = this.prim.getProx();
             LSENode<T> ant = this.prim;
             while (atu != null) {
-                if (novoValor.getInfo().compareTo(atu.getInfo()) == 0) {
-                    while (atu.getProx().getInfo().compareTo(novoValor.getInfo()) == 0) {
-                        ant = atu;
-                        atu = atu.getProx();
-                    }
-                    ant.setProx(novoValor);
-                    novoValor.setProx(atu);
-                    this.qtd++;
-                    System.out.println("==================================================");
-                    System.out.println("valor inserido no meio!!");
-                    System.out.println("==================================================");
-                    return;
-                } else if (novoValor.getInfo().compareTo(atu.getInfo()) < 0) {
+                 if (novoValor.getInfo().compareTo(atu.getInfo()) < 0) {
                     ant.setProx(novoValor);
                     novoValor.setProx(atu);
                     this.qtd++;
