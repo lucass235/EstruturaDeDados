@@ -6,12 +6,15 @@ public class LDE <T extends Comparable<T>>{
     private LDENode<T> ult;
     private int qtd;
     
+    public boolean isEmpty () {
+        return this.qtd == 0;
+    }
+    
     public void inserirValorInicio (T valor) {
         LDENode<T> newValor = new LDENode(valor);
-        if (this.qtd == 0) {
+        if (isEmpty()) {
             this.prim = newValor;
             this.ult = newValor;
-            this.ult.setAnt(this.prim);
             this.qtd++;
             System.out.println("===============================================");
             System.out.println("Primeiro Valor inserido!");
@@ -29,7 +32,7 @@ public class LDE <T extends Comparable<T>>{
     
     public void inserirValorFinal (T valor) {
         LDENode<T> newValor = new LDENode(valor);
-        if (this.qtd == 0) {
+        if (isEmpty()) {
             this.prim = newValor;
             this.ult = newValor;
             this.ult.setAnt(this.prim);
@@ -101,7 +104,7 @@ public class LDE <T extends Comparable<T>>{
     }
     
     public void exibirLista () {
-        if (this.qtd == 0) {
+        if (isEmpty()) {
             System.out.println("===============================================");
             System.out.println("Lista vazia!");
             System.out.println("===============================================");
