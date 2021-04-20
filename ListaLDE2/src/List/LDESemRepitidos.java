@@ -8,11 +8,15 @@ public class LDESemRepitidos<T extends Comparable<T>> {
     private LDENode<T> ult;
     private int qtd;
 
+    public int getQtd() {
+        return qtd;
+    }
+
     public boolean isEmpty() {
         return this.qtd == 0;// ele retornara o resultado dessa condiçao
     }
 
-    public void cadastrarPessoa(T rg, Scanner in) {
+    public void cadastrarPessoa(T rg) {
         LDENode<T> newValor = new LDENode(rg);
         if (isEmpty()) { // verificaçao de lista vazia.
             this.prim = newValor;
@@ -23,8 +27,9 @@ public class LDESemRepitidos<T extends Comparable<T>> {
             System.out.println("===============================================");
         } else { // caso geral de cadastramento, com qtd maior que 0.
             if (buscarPessoa(rg) != null) { // busca de pessoa ja cadastrada.
+                System.out.println("==============================================");
                 System.err.println("Essa pessoa já se encontra registrada!");
-                return;
+                System.out.println("==============================================");
             } else { // garantia de pessoa não encontrada no cadastro, processo de cadastramento...
                 this.ult.setProx(newValor);
                 newValor.setAnt(this.ult);
@@ -34,19 +39,6 @@ public class LDESemRepitidos<T extends Comparable<T>> {
                 System.out.println("Pessoa cadastrada com sucesso!");
                 System.out.println("===============================================");
             }
-        }
-        // confirmaçao de cadastramento...
-        System.out.print("Deseja efetivar seu cadastro? digite 1- para sim ou 2- para não: ");
-        int decisao = in.nextInt();
-        if (decisao == 2) {
-            removerUltimo(); // chamada da funçao de remoçao da pessoa cadastrada recentimente.
-            System.out.println("==============================================");
-            System.err.println("Cadastro cancelado!");
-            System.out.println("==============================================");
-        } else {
-            System.out.println("==============================================");
-            System.out.println("Cadastro efetivado com sucesso!");
-            System.out.println("==============================================");
         }
 
     }
@@ -127,17 +119,6 @@ public class LDESemRepitidos<T extends Comparable<T>> {
         return null;
     }
 
-    public void removerUltimo() {
-        if (this.qtd == 1) {
-            this.prim = null;
-            this.ult = null;
-            this.qtd--;
-        } else {
-            this.ult = this.ult.getAnt();
-            this.ult.setProx(null);
-            this.qtd--;
-        }
-    }
 
     public boolean verificarRg(T rg) {
         LDENode<T> achou = buscarPessoa(rg);
