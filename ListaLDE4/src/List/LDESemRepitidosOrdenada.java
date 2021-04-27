@@ -50,7 +50,7 @@ public class LDESemRepitidosOrdenada<T extends Comparable<T>> {
             while (atu != null) {
                 if (novoValor.getInfo().compareTo(atu.getInfo()) == 0) {
                     //Valor repitido, processo de inserção interrompido...
-                    System.out.printf("%S%n%S%n%S%n",
+                    System.err.printf("%S%n%S%n%S%n",
                             "==============================================",
                             "valor já se encontra na lista!",
                             "==============================================");
@@ -60,7 +60,12 @@ public class LDESemRepitidosOrdenada<T extends Comparable<T>> {
                         atu.getAnt().setProx(novoValor);
                         novoValor.setAnt(atu.getAnt());
                         novoValor.setProx(atu);
+                        atu.setAnt(novoValor);
                         this.qtd++;
+                        System.out.printf("%S%n%S%n%S%n",
+                                "==============================================",
+                                "valor inserido no meio da lista!",
+                                "==============================================");
                         return;
                     } else {
                         atu = atu.getProx();
@@ -93,14 +98,14 @@ public class LDESemRepitidosOrdenada<T extends Comparable<T>> {
                         "==============================================");
             }
         } else { // remoçao geral, com qtd maior que 0.
-            LDENode<T> novoNo = buscarValor(valor); // funçao de buscar novoNo na lista.
+            LDENode<T> novoNo = buscarValorDecrescente(valor); // funçao de buscar novoNo na lista.
             if (novoNo != null) { // caso de novoNo encontrada na lista, processo de remoçao...
-                if (this.prim.getInfo().compareTo(novoNo.getInfo()) == 0) { // caso da novoNo ser a primeira da lista.
+                if (this.prim == novoNo) { // caso da novoNo ser a primeira da lista.
                     // processo de remoçao do primeiro valor da lista.
                     this.prim = this.prim.getProx();
                     this.prim.setAnt(null);
                     this.qtd--;
-                } else if (this.ult.getInfo().compareTo(novoNo.getInfo()) == 0) { // caso da novoNo ser a ultima da lista.
+                } else if (this.ult == novoNo) { // caso da novoNo ser a ultima da lista.
                     // processo de remoçao do ultimo valor da lista.
                     this.ult = this.ult.getAnt();
                     this.ult.setProx(null);
@@ -123,17 +128,28 @@ public class LDESemRepitidosOrdenada<T extends Comparable<T>> {
         }
     }
 
-    private LDENode<T> buscarValor(T valor) {
-        LDENode<T> val = new LDENode(valor);
-        LDENode<T> aux = this.prim;
-        while (aux != null) {
-            if (aux.getInfo().compareTo(val.getInfo()) == 0) {
-                return aux;
-            } else {
-                aux = aux.getProx();
+    private LDENode<T> buscarValorDecrescente(T valor) {
+        if (isEmpty()) {
+            return null;
+        } else if (valor.compareTo(this.prim.getInfo()) > 0) {
+            return null;
+        } else if (valor.compareTo(this.ult.getInfo()) < 0) {
+            return null;
+        } else {
+            LDENode<T> aux = this.prim;
+            while (aux != null) {
+                if (valor.compareTo(aux.getInfo()) > 0) {
+                    return null;
+                } else {
+                    if (aux.getInfo().compareTo(valor) == 0) {
+                        return aux;
+                    } else {
+                        aux = aux.getProx();
+                    }
+                }
             }
+            return null;
         }
-        return null;
     }
 
     public void exibirValoresDecrescente() {
@@ -153,18 +169,18 @@ public class LDESemRepitidosOrdenada<T extends Comparable<T>> {
         }
         System.out.println();
     }
-    
-    public void exibirInfo (T valor) {
-        LDENode<T> no = buscarValor(valor);
+
+    public void exibirInfo(T valor) {
+        LDENode<T> no = buscarValorDecrescente(valor);
         if (no != null) {
             System.out.println("=============================================");
             System.out.println(no.getInfo());
             System.out.println("=============================================");
         } else {
             System.err.printf("%S%n%S%n%S%n",
-                            "==============================================",
-                            "valor não encontrado!",
-                            "==============================================");
+                    "==============================================",
+                    "valor não encontrado!",
+                    "==============================================");
         }
     }
 
