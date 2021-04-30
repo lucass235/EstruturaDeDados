@@ -1,7 +1,5 @@
 package List;
 
-import java.util.Scanner;
-
 public class LDESemRepitidos<T extends Comparable<T>> {
 
     private LDENode<T> prim;
@@ -106,7 +104,7 @@ public class LDESemRepitidos<T extends Comparable<T>> {
         }
     }
 
-    public LDENode<T> buscarPessoa(T rg) {
+    private LDENode<T> buscarPessoa(T rg) {
         LDENode<T> val = new LDENode(rg);
         LDENode<T> aux = this.prim;
         while (aux != null) {
@@ -118,7 +116,6 @@ public class LDESemRepitidos<T extends Comparable<T>> {
         }
         return null;
     }
-
 
     public boolean verificarRg(T rg) {
         LDENode<T> achou = buscarPessoa(rg);

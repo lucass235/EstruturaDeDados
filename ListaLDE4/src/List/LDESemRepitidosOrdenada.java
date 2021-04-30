@@ -132,14 +132,14 @@ public class LDESemRepitidosOrdenada<T extends Comparable<T>> {
         if (isEmpty()) {
             return null;
         } else if (valor.compareTo(this.prim.getInfo()) > 0) {
-            return null;
+            return null; // valor maior que o prim.
         } else if (valor.compareTo(this.ult.getInfo()) < 0) {
-            return null;
+            return null; // valor menor que o ult.
         } else {
             LDENode<T> aux = this.prim;
             while (aux != null) {
                 if (valor.compareTo(aux.getInfo()) > 0) {
-                    return null;
+                    return null; // valor maior que o valor da lista comparado.
                 } else {
                     if (aux.getInfo().compareTo(valor) == 0) {
                         return aux;

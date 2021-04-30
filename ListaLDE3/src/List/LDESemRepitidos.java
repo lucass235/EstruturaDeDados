@@ -49,7 +49,7 @@ public class LDESemRepitidos<T extends Comparable<T>> {
         System.out.println();
     }
 
-    public LDENode<T> buscarValor(T valor) {
+    private LDENode<T> buscarValor(T valor) {
         LDENode<T> val = new LDENode(valor);
         LDENode<T> aux = this.prim;
         while (aux != null) {
