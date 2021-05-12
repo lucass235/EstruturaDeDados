@@ -8,8 +8,8 @@ public class LSESemRepitidos<T extends Comparable<T>> {
     private LSENode<T> ult;
     private int qtd;
 
-    public void inserirProdutoI(T p) {
-        LSENode<T> newPro = new LSENode(p);
+    public void inserirProdutoI(T val) {
+        LSENode<T> newPro = new LSENode(val);
         if (qtd == 0) {
             this.prim = newPro;
             this.ult = newPro;
@@ -18,7 +18,7 @@ public class LSESemRepitidos<T extends Comparable<T>> {
             System.out.println("Produto cadastrado!");
             System.out.println("==============================================");
         } else {
-            LSENode<T> resul = buscar(p);
+            LSENode<T> resul = buscar(val);
             if (resul != null) {
                 System.out.println("=========================================");
                 System.err.println("O produto já foi cadastrado!");
@@ -34,8 +34,8 @@ public class LSESemRepitidos<T extends Comparable<T>> {
         }
     }
 
-    public void inserirProdutoF(T p) {
-        LSENode<T> newPro = new LSENode(p);
+    public void inserirProdutoF(T val) {
+        LSENode<T> newPro = new LSENode(val);
         if (qtd == 0) {
             this.prim = newPro;
             this.ult = newPro;
@@ -44,7 +44,7 @@ public class LSESemRepitidos<T extends Comparable<T>> {
             System.out.println("Produto cadastrado!");
             System.out.println("==============================================");
         } else {
-            LSENode<T> resul = buscar(p);
+            LSENode<T> resul = buscar(val);
             if (resul != null) {
                 System.out.println("==========================================");
                 System.err.println("O produto já foi cadastrado!");
@@ -130,15 +130,13 @@ public class LSESemRepitidos<T extends Comparable<T>> {
         }
     }
 
-    private LSENode<T> buscar(T p) {
+    private LSENode<T> buscar(T val) {
         if (qtd == 0) {
             return null;
         } else {
             LSENode<T> aux = this.prim;
-            T auxProduto = aux.getInfo();
             for (int i = 0; i < qtd; i++) {
-                auxProduto = aux.getInfo();
-                if (auxProduto.compareTo(p) == 0) {
+                if (aux.getInfo().compareTo(val) == 0) {
                     return aux;
                 }
                 aux = aux.getProx();
@@ -147,32 +145,28 @@ public class LSESemRepitidos<T extends Comparable<T>> {
         return null;
     }
 
-    public void buscarProduto(T p) {
+    public void buscarProduto(T val) {
         LSENode<T> retorno;
         if (qtd == 0) {
-            System.out.println("=========================================");
             System.err.println("Lista vazia!");
-            System.out.println("=========================================");
         } else {
-            retorno = buscar(p);
+            retorno = buscar(val);
             if (retorno == null) {
-                System.out.println("=========================================");
                 System.err.println("O produto informado não está cadastrado!");
-                System.out.println("=========================================");
             } else {
                 System.out.println(retorno.getInfo());
             }
         }
     }
 
-    public void alterarDados(T p, Scanner in) {
+    public void alterarDados(T val, Scanner in) {
         if (qtd == 0) {
             System.out.println("==============================");
             System.err.println("Lista vazia!");
             System.out.println("==============================");
         } else {
             LSENode<T> retorno;
-            retorno = buscar(p);
+            retorno = buscar(val);
             if (retorno == null) {
                 System.out.println("==========================================");
                 System.err.println("O produto informado não está cadastrado!");
