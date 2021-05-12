@@ -2,9 +2,10 @@ package Aplicacao;
 
 import java.util.Scanner;
 import List.LDESemRepitidosOrdenada;
+import Exception.RemoverException;
 
 public class Main {
-    
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         LDESemRepitidosOrdenada<Integer> lde = new LDESemRepitidosOrdenada();
@@ -22,7 +23,11 @@ public class Main {
                 case '2':
                     System.out.print("Informe o valor a ser removido: ");
                     valor = in.nextInt();
-                    lde.removerValor(valor);
+                    try {
+                        lde.removerValor(valor);
+                    } catch (RemoverException listVazia) {
+                        System.out.println(listVazia.getMessage());
+                    }
                     break;
                 case '3':
                     lde.exibirValoresDecrescente();
@@ -49,7 +54,7 @@ public class Main {
             }
         } while (op != '0');
     }
-    
+
     public static void menu() {
         System.out.printf("%S%n%S%n%S%n%S%n%S%n%S%n%S",
                 "1- inserir valor", "2 - remover valor",

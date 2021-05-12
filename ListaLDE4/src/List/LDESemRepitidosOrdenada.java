@@ -1,4 +1,5 @@
 package List;
+import Exception.RemoverException;
 
 public class LDESemRepitidosOrdenada<T extends Comparable<T>> {
 
@@ -75,27 +76,22 @@ public class LDESemRepitidosOrdenada<T extends Comparable<T>> {
         }
     }
 
-    public void removerValor(T valor) {
+    public void removerValor(T valor) throws RemoverException{
 
         if (isEmpty()) {
-            System.out.println("===============================================");
-            System.err.println("lista vazia!");
-            System.out.println("===============================================");
+            throw  new RemoverException();
+
+            //System.out.println("===============================================");
+            //System.err.println("lista vazia!");
+            //System.out.println("===============================================");
         } else if (this.qtd == 1) { // remoçao da unica novoNo da lista.
             LDENode<T> pessoa = new LDENode(valor);
             if (this.prim.getInfo().compareTo(pessoa.getInfo()) == 0) { // verificaçao da novoNo escolhida para ser removida.
                 this.prim = null;
                 this.ult = null;
                 this.qtd--;
-                System.out.printf("%S%n%S%n%S%n",
-                        "==============================================",
-                        "valor removido, lista vazia!",
-                        "==============================================");
             } else { // caso da novoNo escolhida não está na lista,
-                System.out.printf("%S%n%S%n%S%n",
-                        "==============================================",
-                        "valor não encontrado!",
-                        "==============================================");
+                throw new RemoverException();
             }
         } else { // remoçao geral, com qtd maior que 0.
             LDENode<T> novoNo = buscarValorDecrescente(valor); // funçao de buscar novoNo na lista.

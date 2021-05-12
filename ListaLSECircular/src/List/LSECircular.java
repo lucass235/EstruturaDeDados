@@ -1,6 +1,6 @@
 package List;
 
-public class LSECircular<T extends Comparable<T> > {
+public class LSECircular<T extends Comparable<T>> {
 
     private LSENode<T> prim; // atributo que guarda o endereço do prim nó.
     private LSENode<T> ult; // atributo que guarda o endereço do ult nó.
@@ -39,6 +39,7 @@ public class LSECircular<T extends Comparable<T> > {
         } else {
             newNo.setProx(this.prim);
             this.prim = newNo;
+            this.ult.setProx(this.prim);
             qtd++;
         }
         System.out.printf("%S%n%S%n%S%n",
@@ -56,10 +57,10 @@ public class LSECircular<T extends Comparable<T> > {
             LSENode<T> aux;
             aux = this.prim;
             System.out.println("================================================");
-            for (int i = 0; i < this.qtd; i++) {
+            do {
                 System.out.print(aux.getInfo() + " ");
                 aux = aux.getProx();
-            }
+            } while (aux != this.prim);
             System.out.println();
             System.out.println("===============================================");
         }
@@ -81,6 +82,7 @@ public class LSECircular<T extends Comparable<T> > {
                     "==============================================");
         } else {
             this.prim = this.prim.getProx();
+            this.ult.setProx(this.prim);
             this.qtd--;
             System.out.printf("%S%n%S%n%S%n",
                     "==============================================",
@@ -121,11 +123,11 @@ public class LSECircular<T extends Comparable<T> > {
                     "==============================================");
         }
     }
-    
-    public int qtdValor (T val) {
-       int vezes = 0;
+
+    public int qtdValor(T val) {
+        int vezes = 0;
         if (isEmpty()) {
-           return 0;
+            return 0;
         } else {
             LSENode<T> aux = this.prim;
             for (int i = 0; i < this.qtd; i++) {
