@@ -57,17 +57,25 @@ public class Main {
                             "==============================================");
                     break;
                 case 4:
-                    lista2 = lista1.dividir();
-                    System.out.printf("%S%n%S%n%S%n",
-                            "==============================================",
-                            "lista dividida!",
-                            "==============================================");
+
+                    try {
+                        lista2 = lista1.dividir();
+                        System.out.printf("%S%n%S%n%S%n",
+                                "==============================================",
+                                "lista dividida",
+                                "==============================================");
+                    } catch (EmptyList | ListWinthOneValue e) {
+                        System.err.printf("%S%n%S%n%S%n",
+                                "==============================================",
+                                e.getMessage(),
+                                "==============================================");
+                    }
                     break;
                 case 5:
                     try {
                         lista1.exibirLista();
                     } catch (EmptyList e) {
-                        System.out.printf("%S%n%S%n%S%n",
+                        System.err.printf("%S%n%S%n%S%n",
                                 "==============================================",
                                 e.getMessage(),
                                 "==============================================");
