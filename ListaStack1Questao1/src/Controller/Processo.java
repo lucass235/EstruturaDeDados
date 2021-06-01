@@ -5,7 +5,7 @@ import Pilha.Stack; // minha classe
 
 public class Processo {
 
-    Stack pilha = new Stack();
+    Stack<Character> pilha = new Stack();
 
     public boolean verificarString(String phrase) {
         char carac;
@@ -17,7 +17,6 @@ public class Processo {
                 }
             }
         }
-        
         return true;
     }
 
@@ -34,13 +33,13 @@ public class Processo {
     private String gerarString() {
         char carac;
         boolean loop = true;
-        carac =  (char) pilha.pop();
+        carac = pilha.pop();
         String frase =  Character.toString(carac);
         do {
             if (pilha.isEmpty()) {
                 loop = false;
             } else {
-                carac = (char) pilha.pop();
+                carac = pilha.pop();
                 frase += carac;
             }
         } while (loop);

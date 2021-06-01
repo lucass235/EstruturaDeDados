@@ -8,10 +8,9 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        Stack pilha = new Stack();
+        Stack<Integer> pilha = new Stack();
         int num, resto;
         boolean loop = true;
-
         System.out.print("Informe um numero: ");
         num = in.nextInt();
         do {
@@ -23,11 +22,8 @@ public class Main {
                 }
                 num = num / 2;
             }
-
         } while (loop);
-
         exibirBinario(pilha);
-
     }
 
     private static void exibirBinario(Stack p) {
