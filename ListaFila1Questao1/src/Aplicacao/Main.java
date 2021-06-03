@@ -48,4 +48,5 @@ public class Main {
         System.out.printf("%S%n%S%n%S%n%S", "1 - anotar pedido","2 - registrar atendimento",
                 "0 - fechar lanchonete", "escolha uma opcao: ");
     }
+    
 }
