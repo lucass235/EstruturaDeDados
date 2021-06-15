@@ -18,7 +18,9 @@ public class Main {
                 case '1':
                     System.out.println("informe o valor a ser inserido: ");
                     num = in.nextInt();
+                    System.out.println();
                     arvore.insert(num);
+                    System.out.println();
                     break;
                 case '2':
                     valor = arvore.menorValor();

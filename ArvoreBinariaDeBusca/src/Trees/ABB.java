@@ -87,27 +87,29 @@ public class ABB<T extends Comparable<T>> {
             while (aux != null) {
                 if (value.compareTo(aux.getInfo()) == 0) {
                     // condicao do valor ser igual ao no atual.
-                    System.out.println("Valor repetido.");
+                    System.err.println("Valor repetido.");
                     return;
                 } else if (value.compareTo(aux.getInfo()) < 0) {
                     // condicao do valor ser menor do que o no atual.
                     if (aux.getLeft() == null) {
                         // condicao do no atual ser null.
                         aux.setLeft(newNo); // fim da insersao.
+                        System.out.println("Valor inserido!");
                         return;
                     } else {
                         // condicao do no atual estar com valor.
-                        aux = aux.getLeft();
+                        aux = aux.getLeft(); // anda para o proximo no.
                     }
                 } else {
                     // condicao do valor ser maior do que o no atual.
                     if (aux.getRight() == null) {
                         // condicao do no atual ser null.
                         aux.setRight(newNo); // fim da insersao.
+                        System.out.println("Valor inserido!");
                         return;
                     } else {
                         // condicao do no atual com valor.
-                        aux = aux.getRight();
+                        aux = aux.getRight(); // anda para o proximo no.
                     }
                 }
             }
@@ -146,4 +148,25 @@ public class ABB<T extends Comparable<T>> {
             }
         }
     }
+    
+//    public void passeioPorNivel () {
+//        // Queue<ABBNode<T>> fila;
+//        ABBNode<T> aux;
+//        if (!isEmpty()) {
+//            //fila = new Queue();
+//            //fila.enQueue(raiz);
+//              while  (!fila.isEmpty()) {
+//                aux = fila.deQueue();
+//                if (aux.getLeft() != null) {
+//                    fila.enQueue(aux.getLeft());
+//                }
+//                if (aux.getRight() != null) {
+//                    fila.enQueue(aux.getRight());
+//                }
+//                System.out.println(aux.getInfo());
+//            }
+//        } else {
+//            System.out.println("Arvore vazia!");
+//        }
+//    }
 }
